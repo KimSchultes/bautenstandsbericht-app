@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #1e3a5f;
+  --color-brand-dark: #142942;
+  --color-brand-light: #2f5a8f;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f5f7;
+  color: #1a1a1a;
+  overscroll-behavior-y: none;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 16px verhindert automatischen Zoom bei Fokus auf iOS */
+button,
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+@supports (padding: max(0px)) {
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  .safe-top {
+    padding-top: max(0px, env(safe-area-inset-top));
+  }
+}
