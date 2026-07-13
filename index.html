@@ -11,6 +11,21 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="description" content="Bautenstandsberichte offline auf der Baustelle erfassen und als PDF exportieren." />
     <title>Bautenstandsbericht</title>
+    <script>
+      // Gegenstück zum Redirect in 404.html (siehe dort) - stellt die eigentliche Route wieder her.
+      ;(function () {
+        var params = new URLSearchParams(window.location.search)
+        var redirectPath = params.get('p')
+        if (redirectPath !== null) {
+          var restored =
+            window.location.pathname.replace(/\/$/, '') +
+            redirectPath.replace(/~and~/g, '&') +
+            (params.get('q') ? '?' + params.get('q').replace(/~and~/g, '&') : '') +
+            window.location.hash
+          window.history.replaceState(null, '', restored)
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

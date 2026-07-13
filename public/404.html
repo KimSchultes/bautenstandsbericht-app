@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bautenstandsbericht</title>
+    <script>
+      // SPA-Routing-Workaround für GitHub Pages (statisches Hosting kennt keine Client-Routen).
+      // Kodiert den Pfad in eine Query-String-Umleitung; index.html macht das rückgängig.
+      // Angepasst von https://github.com/rafgraph/spa-github-pages
+      var segmentsToKeep = 1 // Repo-Name-Präfix (/bautenstandsbericht-app) beibehalten
+      var l = window.location
+      var path = l.pathname.split('/').slice(0, 1 + segmentsToKeep).join('/')
+      var rest = l.pathname.split('/').slice(1 + segmentsToKeep).join('/')
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          path + '/?p=/' + rest.replace(/&/g, '~and~') +
+          (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      )
+    </script>
+  </head>
+  <body></body>
+</html>

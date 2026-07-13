@@ -4,7 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
+const base = process.env.GITHUB_PAGES ? '/bautenstandsbericht-app/' : '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     tailwindcss(),
@@ -12,7 +15,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        id: '/',
+        id: base,
         lang: 'de',
         name: 'Bautenstandsbericht',
         short_name: 'Bautenstand',
@@ -20,8 +23,8 @@ export default defineConfig({
         theme_color: '#1e3a5f',
         background_color: '#f4f5f7',
         display: 'standalone',
-        start_url: '/',
-        scope: '/',
+        start_url: base,
+        scope: base,
         orientation: 'portrait-primary',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
